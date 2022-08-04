@@ -4,30 +4,30 @@ import Repos from "../components/Repos";
 
 import axios from "axios";
 
-function UserPage() {
+function UserPage(props) {
   const [UserData, setUserData] = useState({});
   const [ReposData, setReposData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://api.github.com/users/joshuadavid/repos`)
+      .get(`https://api.github.com/users/${props.userName}/repos`)
       .then((res) => {
         setReposData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.userName]);
   useEffect(() => {
     axios
-      .get("https://api.github.com/users/johnpapa")
+      .get(`https://api.github.com/users/${props.userName}`)
       .then((res) => {
         setUserData(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [props.userName]);
   return (
     <div>
       <UserDisplay data={UserData} />
