@@ -13,7 +13,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand " href="#">
-            Navbar
+            Github Finder
           </a>
           <input
             placeholder="Search for a username"

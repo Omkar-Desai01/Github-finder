@@ -6,18 +6,7 @@ import axios from "axios";
 
 function UserPage(props) {
   const [UserData, setUserData] = useState({});
-  const [ReposData, setReposData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`https://api.github.com/users/${props.userName}/repos`)
-      .then((res) => {
-        setReposData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [props.userName]);
   useEffect(() => {
     axios
       .get(`https://api.github.com/users/${props.userName}`)
@@ -31,7 +20,7 @@ function UserPage(props) {
   return (
     <div>
       <UserDisplay data={UserData} />
-      <Repos data={ReposData} />
+      <Repos data={props.ReposData} currentRepo={props.currentRepos} />
     </div>
   );
 }
