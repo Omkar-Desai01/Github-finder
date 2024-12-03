@@ -1,13 +1,22 @@
 import React from "react";
 import Repo from "./Repo";
+import styled from "styled-components";
 
-export default function Repos(props) {
-  let allRepos = props.currentRepo.map((repo) => {
-    return <Repo data={repo} key={repo.id} />;
-  });
+const ReposGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+export default function Repos({ currentRepo }) {
   return (
-    <>
-      <div class="row">{allRepos}</div>
-    </>
+    <ReposGrid>
+      {currentRepo.map((repo) => (
+        <Repo data={repo} key={repo.id} />
+      ))}
+    </ReposGrid>
   );
 }
